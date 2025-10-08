@@ -1,5 +1,5 @@
 from groq import Groq
-from .config import Config
+from config import Config
 
 current_key_index = 0
 
