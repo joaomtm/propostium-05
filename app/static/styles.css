@@ -1,0 +1,351 @@
+/* Reset geral */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Variáveis e base */
+:root {
+  --base-font-size: 18px;
+  font-size: var(--base-font-size);
+  --bg: #f3ecda;
+  --text: #000;
+  --contrast-image: 100%;
+}
+
+/* Estilo do corpo */
+body {
+  font-family: 'Merriweather', serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+/* Header */
+header {
+  padding: 18px 20px 8px 20px;
+  z-index: 10;
+  position: relative;
+  background: transparent;
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+/* Botões de acessibilidade */
+.accessibility-buttons {
+  display: flex;
+  gap: 10px;
+}
+.accessibility-buttons button {
+  background-color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: 'Merriweather', serif;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.375rem 0.75rem;
+  transition: background-color 0.2s, transform 0.1s;
+  user-select: none;
+  font-size: 1rem;
+}
+.accessibility-buttons button:hover {
+  background-color: #e0d7c2;
+  transform: scale(1.05);
+}
+
+/* Linha separadora */
+.linha-separadora {
+  border: none;
+  border-top: 1px solid var(--text);
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* Main */
+main {
+  flex: 1;
+  padding: 20px;
+  padding-bottom: 120px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+}
+main.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Placeholder maior */
+.placeholder {
+  font-size: 1.05rem;
+  color: var(--text);
+  text-align: center;
+  padding: 0.5rem;
+
+  max-width: 950px;   /* Limita a largura do texto */
+  margin: 0 auto;     /* Centraliza horizontalmente */
+}
+
+/* Utilitário */
+.hidden {
+  display: none !important;
+}
+
+/* Chat container */
+#chat-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  font-size: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+#chat-container::-webkit-scrollbar {
+  width: 10px;
+  background: var(--bg);
+}
+#chat-container::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 2px solid var(--bg);
+  transition: background-color 0.3s;
+}
+#chat-container:hover::-webkit-scrollbar-thumb,
+#chat-container.scrolling::-webkit-scrollbar-thumb {
+  background-color: var(--text);
+}
+#chat-container.scrolling {
+  scrollbar-color: var(--text) var(--bg);
+}
+
+/* Mensagens */
+.message-wrapper {
+  display: flex;
+  width: 100%;
+  margin: 4px 0;
+}
+.message {
+  max-width: 66%;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--text);
+  border-radius: 6px;
+  background-color: var(--bg);
+  font-size: inherit;
+}
+.user {
+  margin-left: auto;
+  text-align: right;
+  background-color: #e9e1cf;
+}
+.bot {
+  margin-right: auto;
+  text-align: left;
+  background-color: #fffdf7;
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: var(--bg);
+  z-index: 10;
+}
+.input-area {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 10px;
+  width: 100%;
+  font-size: 1rem;
+}
+.input-area input {
+  flex: 1;
+  padding: 0.75rem;
+  font-family: 'Merriweather', serif;
+  border: 1px solid var(--text);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--text);
+  font-size: inherit;
+}
+.input-area input:focus {
+  outline: none;
+  border-color: #333;
+}
+.input-area button {
+  padding: 0.75rem 1.25rem;
+  font-weight: bold;
+  font-family: 'Merriweather', serif;
+  border: 1px solid var(--text);
+  border-radius: 6px;
+  background-color: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  font-size: inherit;
+}
+.input-area button:hover {
+  background-color: #e0d7c2;
+  transform: scale(1.05);
+}
+
+/* Imagens laterais: proporção ajustada */
+.image-left, .image-right {
+  position: fixed;
+  transform: translateY(-50%);
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  filter: contrast(var(--contrast-image));
+  transition: filter 0.25s ease;
+  height: auto;
+  max-width: 100%;
+}
+
+/* Tamanho fixo e proporcionado (baseado em 1920x1080) */
+.image-left {
+  left: 40px;
+  width: 160px;
+  top: 56%;
+}
+
+.image-right {
+  right: 20px;
+  width: 200px;
+  top: 60%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .image-left {
+    left: 20px;
+    width: 120px;
+  }
+
+  .image-right {
+    right: 10px;
+    width: 140px;
+  }
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+.modal-content {
+  background: var(--bg);
+  color: var(--text);
+  border: 2px solid var(--text);
+  border-radius: 10px;
+  max-width: 500px;
+  width: calc(100% - 2rem);
+  padding: 20px;
+  position: relative;
+  text-align: left;
+  font-size: 1rem;
+}
+.close-modal {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Acessibilidade: sr-only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tema de alto contraste */
+.high-contrast {
+  --bg: #000 !important;
+  --text: #fff !important;
+  --contrast-image: 180%;
+}
+.high-contrast header,
+.high-contrast footer,
+.high-contrast main {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+.high-contrast .message {
+  background-color: var(--bg) !important;
+  border-color: var(--text) !important;
+  color: var(--text) !important;
+}
+.high-contrast .user {
+  background-color: #222 !important;
+}
+.high-contrast .bot {
+  background-color: #111 !important;
+}
+.high-contrast input,
+.high-contrast button {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+  border-color: var(--text) !important;
+}
+.high-contrast .modal-content {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+  border-color: var(--text) !important;
+}
+.high-contrast .close-modal {
+  color: var(--text) !important;
+}
+
+/* Override robusto para imagens */
+.high-contrast .image-left,
+.high-contrast .image-right {
+  filter: none !important;
+  -webkit-filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+  z-index: 9 !important;
+  isolation: isolate !important;
+  pointer-events: none !important;
+  background: transparent !important;
+  display: block !important;
+}
+.image-left,
+.image-right {
+  mix-blend-mode: normal;
+  -webkit-filter: none;
+}

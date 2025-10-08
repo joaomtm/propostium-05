@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Propositum</title>
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Fonte serifada para um estilo literário -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Cabeçalho principal -->
+  <header>
+    <div class="header-top">
+      <!-- título -->
+      <h1>Propositum</h1>
+
+      <div class="accessibility-buttons" role="toolbar" aria-label="Controles de acessibilidade">
+        <button id="decrease-font" aria-label="Diminuir tamanho da fonte" title="Diminuir fonte">A-</button>
+        <button id="increase-font" aria-label="Aumentar tamanho da fonte" title="Aumentar fonte">A+</button>
+        <button id="toggle-contrast" aria-label="Alternar alto contraste" title="Alto contraste" aria-pressed="false">⚫⚪</button>
+        <!-- Botão de ajuda no header -->
+        <button id="help-btn" aria-label="Ajuda" title="Ajuda">?</button>
+      </div>
+    </div>
+    <hr class="linha-separadora" />
+  </header>
+
+  <!-- Imagens laterais (uma única tag por imagem; JS fará swap do src) -->
+  <img
+    id="image-left"
+    class="image-left"
+    src="assets/img/VICTOR FRANKL PP.png"
+    alt="Imagem do Victor Frankl"
+    data-src-original="assets/img/VICTOR FRANKL PP.png"
+    data-src-white="assets/img/VICTOR_FRANKL_PP_branco.png"
+    aria-hidden="true"
+  />
+
+  <img
+    id="image-right"
+    class="image-right"
+    src="assets/img/Bonequinho PP.png"
+    alt="Imagem de um bonequinho representando o usuário"
+    data-src-original="assets/img/Bonequinho PP.png"
+    data-src-white="assets/img/Bonequinho_PP_branco.png"
+    aria-hidden="true"
+  />
+
+  <!-- Área principal do conteúdo -->
+  <main id="main-content" class="centered" aria-live="polite">
+    <p class="placeholder">Olá! Me chamo Propositum. Estou aqui para te ajudar a descobrir e clarificar o sentido e a vocação que alinhem sua vida com seus valores e talentos. Posso começar te fazendo uma pergunta ou você prefere falar sobre algo específico?</p>
+    <div id="chat-container" class="hidden" role="log" aria-live="polite"></div>
+  </main>
+
+  <!-- Rodapé fixo com campo de entrada de texto e botão -->
+  <footer>
+    <div class="input-area">
+      <label for="user-input" class="sr-only">Digite sua mensagem</label>
+      <input type="text" id="user-input" placeholder="Digite sua mensagem..." aria-label="Digite sua mensagem" />
+      <button id="send-btn" aria-label="Enviar mensagem">Enviar</button>
+    </div>
+  </footer>
+
+  <!-- Modal de Ajuda (oculto por padrão) -->
+  <div id="help-modal" class="modal hidden" role="dialog" aria-labelledby="help-title" aria-modal="true" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <button class="close-modal" id="close-help" aria-label="Fechar ajuda" title="Fechar">&times;</button>
+      <h2>Propositum — Como usar</h2>
+<br>
+<p><strong>O que este ChatBot faz:</strong><br>
+O Propositum é um assistente conversacional inspirado na <em>logoterapia</em> de Viktor Frankl. Por meio de perguntas reflexivas, ele ajuda você a <strong>explorar o sentido da sua vida</strong> e a identificar <strong>pistas vocacionais</strong>.</p>
+
+<br>
+<ul>
+  <li><strong>Controles de acessibilidade:</strong>
+    <ul>
+      <li><strong>A- / A+</strong> — aumenta ou reduz o tamanho das fontes na interface.</li>
+      <li><strong>Alto contraste (⚫⚪)</strong> — ativa um tema de alto contraste para melhorar legibilidade.</li>
+    </ul>
+  </li>
+<br>
+  <li><strong>Como usar o ChatBot:</strong>
+    <ul>
+      <li>Responda de forma breve e sincera às perguntas.</li>
+      <li>Trabalhe um tópico por vez (ex.: <em>propósito</em>, <em>carreira</em>, <em>valores</em>).</li>
+      <li>Ao fim da conversa, espere pistas práticas: perguntas orientadoras, possíveis direções vocacionais e reflexões sobre sentido.</li>
+    </ul>
+  </li>
+<br>
+  <li><strong>Limite importante:</strong> ferramenta reflexiva — <em>não substitui</em> acompanhamento clínico ou terapia profissional.</li>
+</ul>
+<br>
+      </p>
+    </div>
+  </div>
+
+  <!-- Script principal (no fim para garantir que o DOM exista) -->
+  <script src="main.js"></script>
+</body>
+</html>
