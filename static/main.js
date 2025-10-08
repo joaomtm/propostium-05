@@ -57,6 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- FUNÇÃO PARA FORMATAR MARKDOWN (negrito, itálico, quebras de linha) ---
+  function formatarMarkdown(texto) {
+    texto = texto.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    texto = texto.replace(/\*(.*?)\*/g, "<em>$1</em>");
+    texto = texto.replace(/\n/g, "<br>");
+    return texto;
+  }
+
   // Mensagens
   function addMessage(text, sender) {
     if (!chatContainer) return;
@@ -67,9 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const msg = document.createElement("div");
     msg.classList.add("message", sender);
-    msg.innerHTML = sender === "user"
-      ? `<strong>Você:</strong><br>${escapeHtml(text)}`
-      : `<strong>Propositum:</strong><br>${escapeHtml(text)}`;
+    if (sender === "user") {
+      msg.innerHTML = `<strong>Você:</strong><br>${escapeHtml(text)}`;
+    } else {
+      msg.innerHTML = `<strong>Propositum:</strong><br>${formatarMarkdown(text)}`;
+    }
 
     wrapper.appendChild(msg);
     chatContainer.appendChild(wrapper);
@@ -158,6 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // --- REINICIAR CONVERSA AUTOMATICAMENTE AO CARREGAR A PÁGINA ---
+  async function resetarChat() {
+    try {
+      await fetch("/reset", { method: "POST" });
+      console.log("Sessão reiniciada automaticamente.");
+    } catch (e) {
+      console.error("Falha ao reiniciar sessão:", e);
+    }
+  }
+
   // Listeners
   if (decreaseBtn) decreaseBtn.addEventListener("click", () => setRootFontSize(baseFontSize - 2));
   if (increaseBtn) increaseBtn.addEventListener("click", () => setRootFontSize(baseFontSize + 2));
@@ -186,4 +206,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializa
   setRootFontSize(baseFontSize);
   toggleChatVisibility(false);
+  resetarChat(); // <-- Reinicia sessão ao carregar
 });
