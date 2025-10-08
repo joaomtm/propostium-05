@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from .chat import processar_mensagem, inicializar_chat
+from chat import processar_mensagem, inicializar_chat
 
 bp = Blueprint('chat', __name__)
 
